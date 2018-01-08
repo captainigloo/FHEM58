@@ -1,11 +1,10 @@
 FROM debian:latest
-#FROM debian:jessie
 
 MAINTAINER CaptainIgloo <joly.sebastien@gmail.com>
 
-# Install dependencies
+# Install packages APT
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo
+RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -34,12 +33,12 @@ libdbd-sqlite3-perl \
 libtext-diff-perl
 
 # Install fhem
-#RUN wget -q https://debian.fhem.de/archive.key
-#RUN apt-key add archive.key
-#RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
-#RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
-#RUN apt-get update
-#RUN apt-get -y --force-yes install fhem
+RUN wget -q https://debian.fhem.de/archive.key
+RUN apt-key add archive.key
+RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
+RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
+RUN apt-get update
+RUN apt-get -y --force-yes install fhem
 
 #RUN wget http://fhem.de/fhem-5.8.deb
 #RUN dpkg -i fhem-5.8.deb
@@ -55,7 +54,6 @@ CMD ["crond", "-f"]
 
 # Setup TZ
 RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
-#dpkg-reconfigure -f noninteractive tzdata
 
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
