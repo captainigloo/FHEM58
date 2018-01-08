@@ -6,7 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages APT
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate gnupg2 cron apt-utils systemd-sysv
+RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate 
+# gnupg2 cron apt-utils systemd-sysv
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -34,24 +35,25 @@ sqlite3 \
 libdbd-sqlite3-perl \
 libtext-diff-perl
 
-# Install fhem
+# Install APT fhem
 #RUN wget -q https://debian.fhem.de/archive.key
 #RUN apt-key add archive.key
 #RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
 #RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
-#RUN echo "deb https://debian.fhem.de/nightly/ /" | tee -a /etc/apt/sources.list.d/fhem.list
+#RUN echo "deb https://debian.fhem.de/stable/ /" | tee -a /etc/apt/sources.list.d/fhem.list
 #RUN apt-get update
-RUN apt-get -y --configure install fhem
+#RUN apt-get -y --force-yes install fhem # La commande ne passe pas
 
-#RUN wget http://fhem.de/fhem-5.8.deb
-#RUN dpkg -i fhem-5.8.deb
-#RUN apt-get install -f
+# Install DPKG fhem
+RUN wget http://fhem.de/fhem-5.8.deb
+RUN dpkg -i fhem-5.8.deb
+RUN apt-get install -f
 
 # Create log directory
 RUN mkdir -p /var/log/supervisor
 
 # Setup Logrotate
-RUN echo "*/5 *	* * *	/usr/sbin/logrotate /etc/logrotate.conf" >> /etc/crontabs/root
+RUN echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf" >> /etc/crontabs/root
 ADD logrotate.conf /etc/logrotate.conf
 CMD ["crond", "-f"]
 
