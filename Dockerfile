@@ -4,7 +4,7 @@ MAINTAINER CaptainIgloo <joly.sebastien@gmail.com>
 
 # Install packages APT
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
+RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate gnupg2
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -35,7 +35,7 @@ libtext-diff-perl
 # Install fhem
 RUN wget -q https://debian.fhem.de/archive.key
 RUN apt-key add archive.key
-RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
+#RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
 RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
 RUN apt-get update
 RUN apt-get -y --force-yes install fhem
