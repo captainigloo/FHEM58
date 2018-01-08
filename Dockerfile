@@ -41,7 +41,7 @@ RUN apt-key add archive.key
 #RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
 RUN echo "deb https://debian.fhem.de/nightly/ /" | tee -a /etc/apt/sources.list.d/fhem.list
 RUN apt-get update
-RUN apt-get -y --force-yes install fhem
+RUN apt-get -y --allow install fhem
 
 #RUN wget http://fhem.de/fhem-5.8.deb
 #RUN dpkg -i fhem-5.8.deb
