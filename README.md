@@ -1,5 +1,4 @@
-# FhemDebianDockerContainer
-Docker Container Last Debian FHEM
+# FhemDebian DockerContainer
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains FHEM and is based on last Debian with few dependencies.
 
