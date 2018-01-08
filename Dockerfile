@@ -2,6 +2,8 @@ FROM debian:latest
 
 MAINTAINER CaptainIgloo <joly.sebastien@gmail.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install packages APT
 RUN apt-get update
 RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate gnupg2
@@ -36,7 +38,8 @@ libtext-diff-perl
 RUN wget -q https://debian.fhem.de/archive.key
 RUN apt-key add archive.key
 #RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
-RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
+#RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
+RUN echo "deb https://debian.fhem.de/nightly/ /" | tee -a /etc/apt/sources.list.d/fhem.list
 RUN apt-get update
 RUN apt-get -y --force-yes install fhem
 
