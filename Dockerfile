@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages APT
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate gnupg2
+RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate gnupg2 cron apt-utils apt-utils 
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
