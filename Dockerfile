@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages APT
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate 
+RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate 
 # gnupg2 cron apt-utils systemd-sysv
 
 # Install perl packages
