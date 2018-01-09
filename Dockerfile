@@ -60,6 +60,18 @@ RUN mkdir -p /var/log/supervisor
 # Setup TZ
 RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 
+# Setup sshd on port 2222 and allow root login / password = fhem58
+RUN apt-get -y --force-yes install openssh-server && apt-get clean
+RUN sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+RUN sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN echo "root:fhem58" | chpasswd
+RUN /bin/rm  /etc/ssh/ssh_host_*
+
+# Cleaning APT
+RUN apt-get clean 
+#&& apt-get autoremov
+
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
