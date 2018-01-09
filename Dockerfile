@@ -75,7 +75,10 @@ RUN apt-get clean
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Owner fhem.cfg
 RUN chown fhem /opt/fhem/fhem.cfg
-# Ports
-EXPOSE 8083
+
+# SSH / Fhem ports 
+EXPOSE 2222 7072 8083 8084 8085
+
 CMD ["/usr/bin/supervisord"]
