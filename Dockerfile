@@ -1,6 +1,6 @@
 FROM debian:latest
 
-MAINTAINER CaptainIgloo <joly.sebastien@gmail.com>
+MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
