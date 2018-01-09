@@ -71,11 +71,8 @@ RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/s
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
 
-ADD run.sh /root/run.sh
-ENTRYPOINT ["./run.sh"]
-
 # Cleaning APT
-RUN apt-get clean && apt-get autoremov
+RUN apt-get clean
 
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -86,4 +83,8 @@ RUN chown fhem /opt/fhem/fhem.cfg
 # SSH / Fhem ports 
 EXPOSE 2222 7072 8083 8084 8085
 
+ADD run.sh /root/run.sh
+ENTRYPOINT ["./run.sh"]
+
 CMD ["/usr/bin/supervisord"]
+
