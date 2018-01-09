@@ -53,9 +53,9 @@ RUN apt-get install -f
 RUN mkdir -p /var/log/supervisor
 
 # Setup Logrotate
-RUN echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf" >> /etc/crontabs/root
-ADD logrotate.conf /etc/logrotate.conf
-CMD ["crond", "-f"]
+#RUN echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf" >> /etc/crontabs/root
+#ADD logrotate.conf /etc/logrotate.conf
+#CMD ["crond", "-f"]
 
 # Setup TZ
 RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
@@ -66,5 +66,4 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chown fhem /opt/fhem/fhem.cfg
 # Ports
 EXPOSE 8083
-
 CMD ["/usr/bin/supervisord"]
