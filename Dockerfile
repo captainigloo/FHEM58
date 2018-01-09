@@ -6,7 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages APT
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate 
+RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
+RUN apt-get -y --force-yes install procps uptime
 # gnupg2 cron apt-utils systemd-sysv
 
 # Install perl packages
@@ -52,7 +53,8 @@ RUN apt-get install -f
 # Create log directory
 RUN mkdir -p /var/log/supervisor
 
-
+# Setup Logrotate + log
+COPY logrotate.conf /etc/logrotate.conf
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 # Setup cron job
@@ -61,23 +63,17 @@ RUN (crontab -l ; echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf >> /
 CMD cron && tail -f /var/log/cron.log
 
 
-# Setup Logrotate
-#RUN echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf" >> /etc/crontabs/root
-#ADD logrotate.conf /etc/logrotate.conf
-#CMD ["crond", "-f"]
-
 # Setup TZ
 RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 
 
-
 # Setup sshd on port 2222 and allow root login / password = fhem58
-#RUN apt-get -y --force-yes install openssh-server && apt-get clean
-#RUN sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
-#RUN sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-#RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-#RUN echo "root:fhem58" | chpasswd
-#RUN /bin/rm  /etc/ssh/ssh_host_*
+RUN apt-get -y --force-yes install openssh-server
+RUN sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+RUN sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN echo "root:fhem58" | chpasswd
+RUN /bin/rm  /etc/ssh/ssh_host_*
 
 # Cleaning APT
 RUN apt-get clean
@@ -90,8 +86,6 @@ RUN chown fhem /opt/fhem/fhem.cfg
 
 # SSH / Fhem ports 
 EXPOSE 2222 7072 8083 8084 8085
-
-
 
 CMD ["/usr/bin/supervisord"]
 
