@@ -75,6 +75,10 @@ RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/s
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
 
+# check if ssh-keys exists 
+#test -x /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+#/etc/init.d/ssh start
+
 # Cleaning APT
 RUN apt-get clean
 
