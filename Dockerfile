@@ -75,8 +75,7 @@ ADD run.sh /root/run.sh
 ENTRYPOINT ["./run.sh"]
 
 # Cleaning APT
-RUN apt-get clean 
-#&& apt-get autoremov
+RUN apt-get clean && apt-get autoremov
 
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
