@@ -5,7 +5,7 @@ MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
 # Install packages APT
 RUN apt-get update
 RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
-RUN apt-get -y --force-yes install procps uptimed
+RUN apt-get -y --force-yes install procps uptimed gnupg2
 # gnupg2 cron apt-utils systemd-sysv
 
 # Install perl packages
