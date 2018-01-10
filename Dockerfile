@@ -38,8 +38,8 @@ libtext-diff-perl
 RUN wget -q https://debian.fhem.de/archive.key
 RUN apt-key add archive.key
 RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
-#RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
-RUN echo "deb https://debian.fhem.de/stable/ /" | tee -a /etc/apt/sources.list.d/fhem.list
+RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
+#RUN echo "deb https://debian.fhem.de/stable/ /" | tee -a /etc/apt/sources.list.d/fhem.list
 RUN apt-get update
 RUN apt-get -y --force-yes install fhem # La commande ne passe pas
 
