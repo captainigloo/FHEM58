@@ -35,18 +35,18 @@ libdbd-sqlite3-perl \
 libtext-diff-perl
 
 # Install APT fhem
-RUN wget -q https://debian.fhem.de/archive.key
-RUN apt-key add archive.key
-RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
-RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
-#RUN echo "deb https://debian.fhem.de/stable/ /" | tee -a /etc/apt/sources.list.d/fhem.list
-RUN apt-get update
-RUN apt-get -y --force-yes install fhem # La commande ne passe pas
+#RUN wget -q https://debian.fhem.de/archive.key
+#RUN apt-key add archive.key
+#RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
+#RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
+##RUN echo "deb https://debian.fhem.de/stable/ /" | tee -a /etc/apt/sources.list.d/fhem.list
+#RUN apt-get update
+#RUN apt-get -y --force-yes install fhem # La commande ne passe pas
 
 # Install DPKG fhem https://debian.fhem.de/fhem.deb
-#RUN wget http://fhem.de/fhem-5.8.deb
-#RUN dpkg -i fhem-5.8.deb
-#RUN apt-get install -f
+RUN wget http://fhem.de/fhem-5.8.deb
+RUN dpkg -i fhem-5.8.deb
+RUN apt-get install -f
 
 # Create log directory
 RUN mkdir -p /var/log/supervisor
