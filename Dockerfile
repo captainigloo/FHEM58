@@ -58,7 +58,7 @@ RUN touch /var/log/cron.log
 # Setup cron job
 RUN (crontab -l ; echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf >> /var/log/cron.log") | crontab
 # Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
+#CMD cron && tail -f /var/log/cron.log
 CMD cron start
 
 
