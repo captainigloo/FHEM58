@@ -5,8 +5,8 @@ MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
 # Install packages APT
 RUN apt-get update
 RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
-RUN apt-get -y --force-yes install procps uptimed gnupg2
-# gnupg2 cron apt-utils systemd-sysv
+RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils
+# gnupg2 apt-utils systemd-sysv
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -43,7 +43,7 @@ RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.
 RUN apt-get update
 RUN apt-get -y --force-yes install fhem # La commande ne passe pas
 
-# Install DPKG fhem
+# Install DPKG fhem https://debian.fhem.de/fhem.deb
 #RUN wget http://fhem.de/fhem-5.8.deb
 #RUN dpkg -i fhem-5.8.deb
 #RUN apt-get install -f
@@ -59,6 +59,7 @@ RUN touch /var/log/cron.log
 RUN (crontab -l ; echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf >> /var/log/cron.log") | crontab
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
+CMD cron start
 
 
 # Setup TZ
