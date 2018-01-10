@@ -68,9 +68,9 @@ RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 
 # Setup sshd on port 2222 and allow root login / password = fhem58
 RUN apt-get -y --force-yes install openssh-server
-RUN sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
-RUN sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
 
