@@ -1,7 +1,5 @@
 FROM debian:latest
-
 MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
-
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
@@ -9,11 +7,6 @@ ENV TERM xterm
 RUN apt-get update
 RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
 RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils sysvinit-core
-# gnupg2 apt-utils sysvinit-core systemd-sysv
-RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils sysvinit-core systemd
-#-sysv
-RUN apt-get -y --force-yes install lsb-release initscripts libsystemd0 libudev1 sysvinit-utils udev util-linux rsyslog 
-
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -64,16 +57,12 @@ RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 
 # Setup sshd on port 2222 and allow root login / password = fhem58
 RUN apt-get -y --force-yes install openssh-server
-#RUN sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
-#RUN sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-#RUN sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
 RUN /bin/rm  /etc/ssh/sshd_config
 COPY sshd_config /etc/ssh/sshd_config
-#RUN dpkg-reconfigure openssh-server
-#RUN /etc/init.d/ssh start
+# Execute command in console : dpkg-reconfigure openssh-server
+# Execute command in console : /etc/init.d/ssh start
 
 # Cleaning APT
 RUN apt-get clean
@@ -84,11 +73,5 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Owner fhem.cfg
 RUN chown fhem /opt/fhem/fhem.cfg
 
-# SSH / Fhem ports 
 EXPOSE 2222:2222 7072:7072 8083:8083 8084:8084 8085:8085
-
-#WORKDIR /root
 CMD ["/usr/bin/supervisord"]
-#ADD run.sh /root/run.sh
-#RUN chmod 755 /root/run.sh
-#ENTRYPOINT ["./run.sh"]
