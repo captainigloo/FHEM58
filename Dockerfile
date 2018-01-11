@@ -2,7 +2,8 @@ FROM debian:latest
 
 MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
 
-ARG DEBIAN_FRONTED=noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
 
 # Install packages APT
 RUN apt-get update
@@ -80,7 +81,6 @@ RUN apt-get clean
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-COPY run.sh /root/run.sh
 
 
 # Owner fhem.cfg
@@ -90,4 +90,5 @@ RUN chown fhem /opt/fhem/fhem.cfg
 EXPOSE 2222 7072 8083 8084 8085
 
 CMD ["/usr/bin/supervisord"]
-ENTRYPOINT sh /root/run.sh
+COPY run.sh /root/run.sh
+ENTRYPOINT ["./run.sh"]
