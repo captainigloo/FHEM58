@@ -85,7 +85,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chown fhem /opt/fhem/fhem.cfg
 
 # SSH / Fhem ports 
-EXPOSE 2222 7072 8083 8084 8085
+EXPOSE 2222:2222 7072:7072 8083:8083 8084:8084 8085:8085
 
 #WORKDIR /root
 CMD ["/usr/bin/supervisord"]
