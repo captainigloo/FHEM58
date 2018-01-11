@@ -2,11 +2,17 @@ FROM debian:latest
 
 MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
 
+ARG DEBIAN_FRONTED=noninteractive
+
 # Install packages APT
 RUN apt-get update
 RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
-RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils
-# gnupg2 apt-utils systemd-sysv
+RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils sysvinit-core
+# gnupg2 apt-utils sysvinit-core systemd-sysv
+RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils sysvinit-core systemd
+#-sysv
+RUN apt-get -y --force-yes install lsb-release initscripts libsystemd0 libudev1 sysvinit-utils udev util-linux rsyslog 
+
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -75,8 +81,8 @@ RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
 
 # check if ssh-keys exists 
-#test -x /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
-#/etc/init.d/ssh start
+test -x /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+/etc/init.d/ssh start
 
 # Cleaning APT
 RUN apt-get clean
