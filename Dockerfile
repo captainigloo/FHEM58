@@ -66,9 +66,11 @@ RUN apt-get -y --force-yes install openssh-server
 #RUN sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
 #RUN sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 #RUN sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-COPY sshd_config /etc/ssh/sshd_config
+
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
+RUN /bin/rm  /etc/ssh/sshd_config
+COPY sshd_config /etc/ssh/sshd_config
 #RUN dpkg-reconfigure openssh-server
 #RUN /etc/init.d/ssh start
 
@@ -79,7 +81,7 @@ RUN apt-get clean
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY run.sh /root/run.sh
-ENTRYPOINT ["sh","/root/run.sh"]
+
 
 # Owner fhem.cfg
 RUN chown fhem /opt/fhem/fhem.cfg
@@ -88,4 +90,4 @@ RUN chown fhem /opt/fhem/fhem.cfg
 EXPOSE 2222 7072 8083 8084 8085
 
 CMD ["/usr/bin/supervisord"]
-
+ENTRYPOINT sh /root/run.sh
