@@ -78,6 +78,9 @@ RUN apt-get clean
 # supervisord.conf for supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+ADD run.sh /root/run.sh
+ENTRYPOINT ["./run.sh"]
+
 # Owner fhem.cfg
 RUN chown fhem /opt/fhem/fhem.cfg
 
