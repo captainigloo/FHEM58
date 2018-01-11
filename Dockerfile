@@ -88,7 +88,7 @@ RUN chown fhem /opt/fhem/fhem.cfg
 
 # SSH / Fhem ports 
 EXPOSE 2222 7072 8083 8084 8085
-
+WORKDIR /root
 #CMD ["/usr/bin/supervisord"]
 ADD run.sh /root/run.sh
 ENTRYPOINT ["./run.sh"]
