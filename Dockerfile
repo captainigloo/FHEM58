@@ -40,15 +40,6 @@ sqlite3 \
 libdbd-sqlite3-perl \
 libtext-diff-perl
 
-# Install APT fhem
-#RUN wget -q https://debian.fhem.de/archive.key
-#RUN apt-key add archive.key
-#RUN wget --no-check-certificate -qO - https://debian.fhem.de/archive.key | apt-key add -
-#RUN echo "deb https://debian.fhem.de/nightly ./" > /etc/apt/sources.list.d/fhem.list
-##RUN echo "deb https://debian.fhem.de/stable/ /" | tee -a /etc/apt/sources.list.d/fhem.list
-#RUN apt-get update
-#RUN apt-get -y --force-yes install fhem # La commande ne passe pas
-
 # Install DPKG fhem https://debian.fhem.de/fhem.deb
 RUN wget http://fhem.de/fhem-5.8.deb
 RUN dpkg -i fhem-5.8.deb
@@ -67,20 +58,19 @@ RUN (crontab -l ; echo "* * */5 * 0 /usr/sbin/logrotate /etc/logrotate.conf >> /
 #CMD cron && tail -f /var/log/cron.log
 CMD cron start
 
-
 # Setup TZ
 RUN echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 
-
 # Setup sshd on port 2222 and allow root login / password = fhem58
 RUN apt-get -y --force-yes install openssh-server
-RUN sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
-RUN sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-RUN sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+#RUN sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
+#RUN sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+#RUN sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+COPY sshd_config /etc/ssh/sshd_config
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
-RUN dpkg-reconfigure openssh-server
-RUN /etc/init.d/ssh start
+#RUN dpkg-reconfigure openssh-server
+#RUN /etc/init.d/ssh start
 
 # Cleaning APT
 RUN apt-get clean
