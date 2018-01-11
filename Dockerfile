@@ -79,9 +79,7 @@ RUN sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN echo "root:fhem58" | chpasswd
 RUN /bin/rm  /etc/ssh/ssh_host_*
-
-# check if ssh-keys exists 
-test -x /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+RUN dpkg-reconfigure openssh-server
 /etc/init.d/ssh start
 
 # Cleaning APT
