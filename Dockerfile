@@ -39,6 +39,9 @@ RUN wget http://fhem.de/fhem-5.8.deb
 RUN dpkg -i fhem-5.8.deb
 RUN apt-get install -f
 
+RUN echo 'attr global pidfilename /var/run/fhem/fhem.pid' >> /opt/fhem/fhem.cfg
+RUN echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg
+
 # Create log directory
 RUN mkdir -p /var/log/supervisor
 
