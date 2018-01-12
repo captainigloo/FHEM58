@@ -38,7 +38,7 @@ RUN wget http://fhem.de/fhem-5.8.deb
 RUN dpkg -i fhem-5.8.deb
 RUN apt-get install -f
 
-RUN echo 'attr global pidfilename /var/run/fhem/fhem.pid' >> /opt/fhem/fhem.cfg
+# Enabled writing mode Fhem web
 RUN echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg
 
 # Create log directory
