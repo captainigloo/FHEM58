@@ -6,7 +6,7 @@ ENV TERM xterm
 # Install packages APT
 RUN apt-get update
 RUN apt-get -y --force-yes install supervisor cron telnet wget curl vim git nano make gcc g++ apt-transport-https sudo logrotate
-RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils sysvinit-core
+RUN apt-get -y --force-yes install procps uptimed gnupg2 apt-utils
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -76,5 +76,5 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Owner fhem.cfg
 RUN chown fhem /opt/fhem/fhem.cfg
 
-EXPOSE 2222 7072 8083 8085
+EXPOSE 2222 7072 8083 8084 8085
 CMD ["/usr/bin/supervisord"]
