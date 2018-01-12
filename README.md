@@ -14,15 +14,15 @@ docker run -d \
 ```
 ## After starting container :
 
-# To generate a new SSH key run command in console : 
+### To generate a new SSH key run command in console : 
 ```
 dpkg-reconfigure openssh-server
 ```
-# To start SSH daemon run command in console : 
+### To start SSH daemon run command in console : 
 ```
 /etc/init.d/ssh start
 ```
-# To change Timezone run command in console : 
+### To change Timezone run command in console : 
 ```
 echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 ```
