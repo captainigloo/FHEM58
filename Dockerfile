@@ -1,7 +1,6 @@
 FROM debian:latest
 MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
-ENV TERM xterm
 
 # Install packages APT
 RUN apt-get update
