@@ -11,7 +11,7 @@ I'm running this container on my Synology DiskStation 1512+. This docker image c
 echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg
 ```
 ## Run :
-```
+```shell
 docker run -d \
 	   --net=bridge \
 	   --name=fhem
@@ -29,7 +29,7 @@ docker run -d \
 ```
 Example
 ```shell
-docker run -ti -d --name=fhemUSB --hostname=Fhem58 -p 7072:7072 -p 8083:8083 -p 8084:8084 -p 8085:8085 -p 2222:2222 --restart=always --device=/dev/ttyUSB2:/dev/ttyUSB2 -v /etc/localtime:/etc/localtime captainigloo69/fhem58
+docker run -ti -d --name=fhemUSB --hostname=Fhem58 -p 7072:7072 -p 8083:8083 -p 8084:8084 -p 8085:8085 -p 2222:2222 --restart=always --device=/dev/ttyUSB2:/dev/ttyUSB2 -v /etc/localtime:/etc/localtime -e TZ="Europe/Paris" captainigloo69/fhem58
 ```
 
 ## After starting container :
