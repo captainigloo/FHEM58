@@ -1,14 +1,14 @@
 ![alt text](https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
-
+![GitHub Logo](/images/docker.jpg)
 # FhemDebian Docker Container 
 
-I'm running this container on my Synology DiskStation 1512+. This docker image contains FHEM 5.8 and is based on last Debian with few dependencies.
+I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few dependencies.
 
-- SSHD is setup on port 2222
-- Login/password : root/fhem58
+- SSHD is setup on **port 2222**
+- Login/password : **root/fhem58**
 - Enabled writing mode Fhem web
 ```
-echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg
+**echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg**
 ```
 ## Run :
 ```shell
@@ -25,7 +25,7 @@ docker run -d \
 	   --device=<path to device> \
 	   --restart=always \
 	   -e TZ=<timezone> \
-	   captainigloo69/fhem58
+	   **captainigloo69/fhem58**
 ```
 Example
 ```shell-script
