@@ -1,6 +1,6 @@
 ![alt text](https://raw.github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
 
-# FhemDebian Docker Container @captainigloo
+# FhemDebian Docker Container
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains FHEM 5.8 and is based on last Debian with few dependencies.
 
