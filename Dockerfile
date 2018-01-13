@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER CaptainIgloo69 <joly.sebastien@gmail.com>
+
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages APT
