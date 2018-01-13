@@ -32,7 +32,7 @@ dpkg-reconfigure openssh-server
 ```
 /etc/init.d/ssh start
 ```
-- To change Timezone run command in console (if not use parameter "Docker run with ```-e TZ=<timezone>```):
+- To change Timezone run command in console (if not use parameter "```Docker run with -e TZ=<timezone>```"):
 ```
 echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 ```
