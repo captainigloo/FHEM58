@@ -17,9 +17,10 @@ docker run -d \
            -p 8083:8083 \
            -p 8084:8084 \
 	   -p 8085:8085 \
+	   -v /etc/localtime:/etc/localtime \
 	   --device=<path to device> \
-	   --restart=always
-	   -e TZ=Europe\Paris \
+	   --restart=always \
+	   -e TZ=<timezone> \
 	   
 ```
 ## After starting container :
@@ -32,13 +33,7 @@ dpkg-reconfigure openssh-server
 ```
 /etc/init.d/ssh start
 ```
-- To change Timezone : 
-
-With command "Docker run"
-```
--e TZ=Europe\Paris \
-```
-run command in console 
+- To change Timezone run command in console (if not use parameter "Docker run" -e TZ=<timezone> ):
 ```
 echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 ```
