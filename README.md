@@ -1,6 +1,6 @@
 ![alt text](https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
 ![GitHub Logo](/images/docker.jpg)
-# FhemDebian Docker Container 
+# Fhem in Debian Docker Container 
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few dependencies.
 
@@ -34,15 +34,15 @@ docker run -ti -d --name=fhemUSB --hostname=Fhem58 -p 7072:7072 -p 8083:8083 -p 
 
 ## After starting container :
 
-- To generate a new SSH key run command in console : 
+- **To generate a new SSH key run command in console :** 
 ```
 dpkg-reconfigure openssh-server
 ```
-- *To start SSH daemon run command in console :* 
+- **To start SSH daemon run command in console :** 
 ```
 /etc/init.d/ssh start
 ```
-- To change Timezone run command in console (if not use parameter ```Docker run with "-e TZ=<timezone>"```) :
+- **To change Timezone run command in console** (if not use parameter ```Docker run with "-e TZ=<timezone>"```) **:**
 ```
 echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 ```
