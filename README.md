@@ -2,6 +2,7 @@
 ![alt text](https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few dependencies.
+Tested with several types of Zwave + and EnOcean dongle.
 
 - SSHD is setup on **port 2222**
 - Login/password : **root/fhem58**
