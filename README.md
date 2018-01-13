@@ -11,12 +11,16 @@ echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg
 ## Run :
 ```
 docker run -d \
-	   --net=host \
+	   --net=bridge \
            -p 2222:2222 \
            -p 7072:7072 \	   
            -p 8083:8083 \
            -p 8084:8084 \
 	   -p 8085:8085 \
+	   --device=<path to device> \
+	   --restart=always
+	   -e TZ=Europe\Paris \
+	   
 ```
 ## After starting container :
 
@@ -28,7 +32,12 @@ dpkg-reconfigure openssh-server
 ```
 /etc/init.d/ssh start
 ```
-- To change Timezone run command in console : 
+- To change Timezone : 
+- With command "Docker run"
+```
+-e TZ=Europe\Paris \
+```
+- run command in console 
 ```
 echo Europe/Paris > /etc/timezone dpkg-reconfigure -f noninteractive tzdata
 ```
