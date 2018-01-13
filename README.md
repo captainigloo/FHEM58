@@ -1,4 +1,4 @@
-![alt text](https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
+![alt text](https://raw.githubusercontent.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
 
 # FhemDebian Docker Container 
 
