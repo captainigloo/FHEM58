@@ -1,3 +1,5 @@
+[[https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg|alt=Container]]
+
 # FhemDebian Docker Container 
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains FHEM 5.8 and is based on last Debian with few dependencies.
@@ -12,6 +14,8 @@ echo 'attr WEB editConfig 1' >> /opt/fhem/fhem.cfg
 ```
 docker run -d \
 	   --net=bridge \
+	   --name=fhem
+	   --hostname=FhemCtrl \
            -p 2222:2222 \
            -p 7072:7072 \	   
            -p 8083:8083 \
@@ -21,6 +25,7 @@ docker run -d \
 	   --device=<path to device> \
 	   --restart=always \
 	   -e TZ=<timezone> \
+	   captainigloo69/fhem58
 ```
 ## After starting container :
 
