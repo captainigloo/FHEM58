@@ -27,6 +27,10 @@ docker run -d \
 	   -e TZ=<timezone> \
 	   captainigloo69/fhem58
 ```
+# Example
+
+docker run -ti -d --name=fhemUSB --hostname=Fhem58 -p 7072:7072 -p 8083:8083 -p 8084:8084 -p 8085:8085 -p 2222:2222 --restart=always --device=/dev/ttyUSB2:/dev/ttyUSB2 -v /etc/localtime:/etc/localtime captainigloo69/fhem58
+
 ## After starting container :
 
 - To generate a new SSH key run command in console : 
