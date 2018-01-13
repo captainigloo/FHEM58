@@ -25,7 +25,7 @@ docker run -d \
 	   --device=<path to device> \
 	   --restart=always \
 	   -e TZ=<timezone> \
-	   **captainigloo69/fhem58**
+	   captainigloo69/fhem58
 ```
 **Example**
 ```shell-script
@@ -38,7 +38,7 @@ docker run -ti -d --name=fhemUSB --hostname=Fhem58 -p 7072:7072 -p 8083:8083 -p 
 ```
 dpkg-reconfigure openssh-server
 ```
-- To start SSH daemon run command in console : 
+- *To start SSH daemon run command in console :* 
 ```
 /etc/init.d/ssh start
 ```
