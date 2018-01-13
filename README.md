@@ -1,8 +1,9 @@
 # Fhem in Debian Docker Container 
 ![alt text](https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
 
-I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few dependencies.
-Tested with several types of Zwave + and EnOcean dongle.
+I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few Perl dependencies and few APT install.
+
+This setup is tested with several types of USB dongles ( 3 Zwave + controller and 1 EnOcean Controller pluged on Host Docker).
 
 - SSHD is setup on **port 2222**
 - Login/password : **root/fhem58**
