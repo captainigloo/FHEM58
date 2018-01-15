@@ -1,8 +1,4 @@
-[![Docker Build Status](https://img.shields.io/docker/build/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/)
-
-[![Docker Automated build](https://img.shields.io/docker/automated/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/)
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/)
+[![Docker Build Status](https://img.shields.io/docker/build/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/) [![Docker Automated build](https://img.shields.io/docker/automated/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/) [![Docker Pulls](https://img.shields.io/docker/pulls/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/)
 
 # Fhem in Debian Docker Container 
 ![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.png)
