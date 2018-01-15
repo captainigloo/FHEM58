@@ -1,5 +1,8 @@
+[![Docker Build Status](https://img.shields.io/docker/build/captainigloo69/homebridge.svg)](https://hub.docker.com/r/captainigloo/FHEM58/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/captainigloo69/homebridge.svg)](https://hub.docker.com/r/marcoraddatz/homebridge/)
+
 # Fhem in Debian Docker Container 
-![alt text](https://github.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
+![logo](https://raw.githubusercontent.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
 
 [Repo Docker](https://hub.docker.com/r/captainigloo69/fhem58/)
 
