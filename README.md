@@ -3,7 +3,7 @@
 
 # FHEM 5.8 in Debian Docker Container
 
-| Tables        | Are           | Cool  |
+| ![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.png)        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
