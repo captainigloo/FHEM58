@@ -5,7 +5,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/)
 
 # Fhem in Debian Docker Container 
-![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.jpg)
+![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.png)
 
 ![Registry Overview.](https://raw.githubusercontent.com/marcoraddatz/homebridge-docker/master/doc/docker-1.png)
 
