@@ -3,9 +3,8 @@
 
 # FHEM 5.8 in Debian Docker Container
 
-|![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.png)| I'm running this container on my Synology DiskStation 1512+.
-This docker image contains **FHEM 5.8** and is based on last Debian with few Perl dependencies and few APT install.|
-| ------------- | :-------------: |
+|![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.png)| I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few Perl dependencies and few APT install.|
+| ------------- | :------------- |
 ||This setup is tested with several types of USB dongles with **/dev/ttyACM0@115200** and **/dev/ttyUSB2@57600**.|
 
 
