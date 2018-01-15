@@ -7,9 +7,6 @@
 # Fhem in Debian Docker Container 
 ![Registry Overview.](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.png)
 
-![Registry Overview.](https://raw.githubusercontent.com/marcoraddatz/homebridge-docker/master/doc/docker-1.png)
-
-
 I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few Perl dependencies and few APT install.
 
 This setup is tested with several types of USB dongles with **/dev/ttyACM0@115200** and **/dev/ttyUSB2@57600**.
