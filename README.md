@@ -7,6 +7,7 @@
 # Fhem in Debian Docker Container 
 ![logo](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/fhem.jpg)
 
+![Registry Overview.](https://raw.githubusercontent.com/marcoraddatz/homebridge-docker/master/doc/docker-1.png)
 
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few Perl dependencies and few APT install.
