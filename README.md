@@ -5,8 +5,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/captainigloo69/fhem58.svg)](https://hub.docker.com/r/captainigloo69/fhem58/)
 
 # Fhem in Debian Docker Container 
-![logo](https://raw.githubusercontent.com/captainigloo/FHEM58/blob/master/images/docker.jpg)
-
+![logo](https://raw.githubusercontent.com/captainigloo/FHEM58/master/images/docker.jpg)
 [Repo Docker](https://hub.docker.com/r/captainigloo69/fhem58/)
 
 I'm running this container on my Synology DiskStation 1512+. This docker image contains **FHEM 5.8** and is based on last Debian with few Perl dependencies and few APT install.
